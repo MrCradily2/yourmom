@@ -24,7 +24,7 @@
             <a class="nav-link" href="effectiveByType.html">Effectiveness by Type</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="natureByName.html">Nature By Name</a>
+            <a class="nav-link" href="natureByName.html">Nature By Name</a>
           </li>
         </ul>
       </div>
@@ -38,13 +38,18 @@
   <input type="search" class="form-control" id="searchBox" placeholder="Search for Pokemon By Name">
 </div>
 <div class="col-auto">
-  <button type="button" class="btn btn-primary" id="searchButton">search</button>
+  <button type="button" class="btn btn-primary" id="searchButton" onclick="fetchByName(getElementById('searchBox').value)">search</button>
 </div>
 </div>  
+
+<div  id='cardDiv'>
+  
+</div>
 
 
 </main><!-- /.container -->
 <script src="./pokemonByName_files/jquery-3.5.1.slim.min.js.download" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="./pokemonByName_files/bootstrap.bundle.min.js.download" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+      <script src="fetchByName.js"></script>
 
 </body></html>

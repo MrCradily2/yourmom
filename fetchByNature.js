@@ -1,5 +1,5 @@
-function fetchByName(pokemonName) {
-    fetch('https://pokeapi.co/api/v2/pokemon/' + pokemonName +'/')
+function fetchByNature(pokemonNature) {
+    fetch('https://pokeapi.co/api/v2/nature/' + pokemonNature +'/')
 
     .then(response =>{
         if(!response.ok){
@@ -10,41 +10,30 @@ function fetchByName(pokemonName) {
     })
 
     .then(data=>{
+
+
+
         console.log(data)
-        const html = data.map(pokemon=>{
+        const html = [data].map(nature=>{
             return`
 
             <div class="card my-3" style="max-width: 960px;">
             <div class="row no-gutters">
-              <div class="col-md-4">
-                <img src="..." class="card-img" alt="...">
-              </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">Pokemon Search</h5>
-                  <p class="card-text">Name: ${pokemon.name}</p>
-                  <p class="card-text">Type: ${pokemon.types}</p>
-                  <p class="card-text">Height: ${pokemon.height}</p>
-                  <p class="card-text">Weight: ${pokemon.weight}</p>
-                  <p class="card-text">Abilities: ${pokemon.ability}</p>
+                  <h5 class="card-title">${nature.name.replace(/^./, str => str.toUpperCase())}</h5>
+                  <p class="card-text">Stat Incresed: ${nature.increased_stat.name.replace(/^./, str => str.toUpperCase())}</p>
+                  <p class="card-text">Stat Decreased: ${nature.decreased_stat.name.replace(/^./, str => str.toUpperCase())}</p>
                 </div>
               </div>
             </div>
-          </div>`
-        
+          </div>`;
         })
         .join("");
         console.log(html);
 
-        document.querySelector('#app').insertAdjacentHTML('afterbegin', html); 
+        document.getElementById("cardDiv").innerHTML =  html;  
 
     })
 
 }
-
-function cardmaker(pokemon) {
-    
-    
-}
-
-fetchByName(ditto)
