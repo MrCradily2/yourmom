@@ -1,21 +1,21 @@
 function fetchByNature(pokemonNature) {
-    fetch('https://pokeapi.co/api/v2/nature/' + pokemonNature +'/')
+  fetch('https://pokeapi.co/api/v2/nature/' + pokemonNature + '/')
 
-    .then(response =>{
-        if(!response.ok){
+    .then(response => {
+      if (!response.ok) {
 
-            throw Error("ERROR");
-        }
-        return response.json();
+        throw Error("ERROR");
+      }
+      return response.json();
     })
 
-    .then(data=>{
+    .then(data => {
 
 
 
-        console.log(data)
-        const html = [data].map(nature=>{
-            return`
+      console.log(data)
+      const html = [data].map(nature => {
+          return `
 
             <div class="card my-3" style="max-width: 960px;">
             <div class="row no-gutters">
@@ -30,9 +30,9 @@ function fetchByNature(pokemonNature) {
           </div>`;
         })
         .join("");
-        console.log(html);
+      console.log(html);
 
-        document.getElementById("cardDiv").innerHTML =  html;  
+      document.getElementById("cardDiv").innerHTML = html;
 
     })
 
