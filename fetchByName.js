@@ -1,39 +1,39 @@
 function fetchByName(pokemonName) {
-    fetch('https://pokeapi.co/api/v2/pokemon/' + pokemonName + '/')
+  fetch('https://pokeapi.co/api/v2/pokemon/' + pokemonName + '/')
 
-        .then(response => {
-            if (!response.ok) {
+    .then(response => {
+      if (!response.ok) {
 
-                throw Error("ERROR");
+        throw Error("ERROR");
+      }
+      return response.json();
+    })
+
+    .then(data => {
+      console.log(data)
+      const html = [data].map(pokemon => {
+
+
+          var pokemonTypes = ""
+          for (i = 0; i < pokemon.types.length; i++) {
+            if (i > 0) {
+              pokemonTypes += ", "
             }
-            return response.json();
-        })
+            pokemonTypes += pokemon.types[i].type.name.replace(/^./, str => str.toUpperCase())
+          }
 
-        .then(data => {
-            console.log(data)
-            const html = [data].map(pokemon => {
-
-
-                    var pokemonTypes = ""
-                    for (i = 0; i < pokemon.types.length; i++) {
-                        if (i > 0) {
-                            pokemonTypes += ", "
-                        }
-                        pokemonTypes += pokemon.types[i].type.name.replace(/^./, str => str.toUpperCase())
-                    }
-
-                    var pokemonAbilities = ""
-                    for (i = 0; i < pokemon.abilities.length; i++) {
-                        if (i > 0) {
-                            pokemonAbilities += ", "
-                        }
-                        pokemonAbilities += pokemon.abilities[i].ability.name.replace(/^./, str => str.toUpperCase())
-                    }
+          var pokemonAbilities = ""
+          for (i = 0; i < pokemon.abilities.length; i++) {
+            if (i > 0) {
+              pokemonAbilities += ", "
+            }
+            pokemonAbilities += pokemon.abilities[i].ability.name.replace(/^./, str => str.toUpperCase())
+          }
 
 
 
 
-                    return `
+          return `
 
             <div class="card my-3" style="max-width: 960px;">
             <div class="row no-gutters">
@@ -51,12 +51,12 @@ function fetchByName(pokemonName) {
               </div>
             </div>
           </div>`;
-                })
-                .join("");
-            console.log(html);
-
-            document.getElementById("cardDiv").innerHTML = html;
-
         })
+        .join("");
+      console.log(html);
+
+      document.getElementById("cardDiv").innerHTML = html;
+
+    })
 
 }
